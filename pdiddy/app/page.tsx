@@ -60,12 +60,12 @@ export default function HomePage() {
                 <span className="text-black"  >Corra! Ganhe 20% de Desconto</span>
               </div>
               <h1 className="text-black text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight tracking-tight">
-                O Melhor Hambúrguer
+                As Melhores Sobremesas
                 <br />
                 <span className="text-black">da Cidade</span>
               </h1>
               <p className="text-black mb-8 text-lg max-w-md font-medium">
-                Ingredientes frescos, sabor inigualável e entrega rápida na sua porta.
+                Donuts, bolos, cookies e muito mais. Feitos frescos diariamente com muito amor.
               </p>
               <Button
                 className="bg-black hover:bg-brown-600 text-white border-none rounded-full px-8 py-6 text-lg font-bold shadow-xl shadow-brown-500/30 hover:scale-105 transition-all"
@@ -76,7 +76,7 @@ export default function HomePage() {
 
             <div className="hidden md:block relative w-64 h-64 lg:w-80 lg:h-80 animate-in fade-in slide-in-from-right duration-700">
               <div className="text-[12rem] leading-none filter drop-shadow-2xl transform hover:rotate-12 transition-transform duration-500 cursor-pointer hover:scale-110">
-                🍔
+                🍩
               </div>
             </div>
           </div>
