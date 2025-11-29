@@ -100,7 +100,7 @@ export const Modal: React.FC<ModalProps> = ({
     >
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/50 transition-opacity"
+        className="fixed inset-0 bg-white/80 "
         onClick={onClose}
         aria-hidden="true"
       />
@@ -109,7 +109,7 @@ export const Modal: React.FC<ModalProps> = ({
       <div
         ref={modalRef}
         className={`
-          relative bg-cream-50 rounded-lg shadow-xl
+          relative bg-white rounded-lg shadow-xl
           w-full ${sizeStyles[size]}
           max-h-[90vh] overflow-y-auto
           transform transition-all

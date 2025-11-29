@@ -4,6 +4,7 @@ import "./globals.css";
 import { CartProvider } from "@/lib/context/CartContext";
 import { AuthProvider } from "@/lib/context/AuthContext";
 import { ToastProvider } from "@/lib/context/ToastContext";
+import { QueryProvider } from "@/lib/providers/QueryProvider";
 import { ToastContainer } from "@/components/ui/Toast";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 
@@ -36,14 +37,16 @@ export default function RootLayout({
           Pular para o conteúdo principal
         </a>
         <ErrorBoundary>
-          <ToastProvider>
-            <AuthProvider>
-              <CartProvider>
-                {children}
-                <ToastContainer />
-              </CartProvider>
-            </AuthProvider>
-          </ToastProvider>
+          <QueryProvider>
+            <ToastProvider>
+              <AuthProvider>
+                <CartProvider>
+                  {children}
+                  <ToastContainer />
+                </CartProvider>
+              </AuthProvider>
+            </ToastProvider>
+          </QueryProvider>
         </ErrorBoundary>
       </body>
     </html>

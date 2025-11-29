@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Search, Menu, X, User } from 'lucide-react';
+import { Search, Menu, X, User, ShoppingBag } from 'lucide-react';
 import { Input } from '../ui/Input';
 import { CartIcon } from './CartIcon';
 import { Navigation } from './Navigation';
@@ -87,6 +87,13 @@ export function Header() {
             <div className="hidden lg:flex items-center gap-4">
               <Navigation />
               <div className="w-px h-8 bg-neutral-200"></div>
+              <Link
+                href="/pedidos"
+                className="p-2 rounded-full hover:bg-neutral-100 transition-colors duration-200"
+                title="Meus Pedidos"
+              >
+                <ShoppingBag className="w-6 h-6 text-neutral-700" />
+              </Link>
               <CartIcon />
               <Link
                 href="/perfil"

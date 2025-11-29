@@ -10,7 +10,9 @@ import { OrderSummary } from '@/components/order/OrderSummary';
 import { Button } from '@/components/ui/Button';
 import { DeliveryAddress, PaymentMethod } from '@/lib/types/order';
 import { deliveryAddressSchema, paymentMethodSchema } from '@/lib/validations/checkout';
-import { orderService } from '@/lib/services/orderService';
+// import { orderService } from '@/lib/services/orderService'; // Mock service removed
+import { useCreateOrderFromCart } from '@/lib/hooks/useOrdersApi';
+import { CreateOrderData } from '@/lib/types/api';
 import { ZodError } from 'zod';
 
 export default function CheckoutPage() {
@@ -40,6 +42,19 @@ export default function CheckoutPage() {
   const [paymentErrors, setPaymentErrors] = useState<Partial<Record<keyof PaymentMethod, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [generalError, setGeneralError] = useState<string | null>(null);
+
+  const { createOrderFromCart } = useCreateOrderFromCart({
+    onSuccess: () => {
+      // Clear cart
+      clearCart();
+      // Redirect to orders page
+      router.push('/pedidos');
+    },
+    onError: (error) => {
+      setGeneralError(error.message || 'Erro ao criar pedido. Tente novamente.');
+      setIsSubmitting(false);
+    }
+  });
 
   // Redirect if cart is empty
   React.useEffect(() => {
@@ -101,25 +116,19 @@ export default function CheckoutPage() {
       setIsSubmitting(true);
       setGeneralError(null);
 
-      // Create order
-      const order = await orderService.create({
-        userId: user?.id || 'guest',
-        items: cart.items,
-        deliveryAddress,
-        paymentMethod,
-        total: cart.total,
-      });
+      // Prepare items for backend
+      const orderItems: CreateOrderData[] = cart.items.map(item => ({
+        productId: item.productId,
+        quantity: item.quantity
+      }));
 
-      // Clear cart
-      await clearCart();
+      // Create orders (one per item as per backend limitation)
+      await createOrderFromCart(orderItems);
 
-      // Redirect to success page
-      router.push(`/sucesso?orderId=${order.id}`);
+      // Success is handled in onSuccess callback
     } catch (error) {
-      setGeneralError(
-        error instanceof Error ? error.message : 'Erro ao criar pedido. Tente novamente.'
-      );
-    } finally {
+      // Error is handled in onError callback but we catch here to prevent crash
+      console.error('Checkout error:', error);
       setIsSubmitting(false);
     }
   };
