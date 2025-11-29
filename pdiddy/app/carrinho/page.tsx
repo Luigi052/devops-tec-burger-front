@@ -70,7 +70,7 @@ export default function CarrinhoPage() {
               Adicione produtos ao seu carrinho para continuar com a compra
             </p>
             <Button onClick={handleContinueShopping} size="lg" aria-label="Voltar para a página inicial">
-              <ArrowLeft className="w-5 h-5" aria-hidden="true" />
+              <ArrowLeft className="w-5 h-5 mr-2" aria-hidden="true" />
               Continuar Comprando
             </Button>
           </div>
@@ -109,25 +109,23 @@ export default function CarrinhoPage() {
           {/* Cart Summary */}
           <aside className="lg:col-span-1" aria-label="Resumo do pedido">
             <CartSummary subtotal={cart.total} total={cart.total} />
-            
+
             {/* Action Buttons */}
-            <div className="mt-6 space-y-3">
+            <div className="mt-6 space-y-3 sticky top-[calc(24rem+2rem)]">
               <Button
                 onClick={handleCheckout}
-                size="lg"
-                className="w-full"
+                className="w-full rounded-full h-14 text-lg font-bold shadow-xl shadow-primary-500/25 hover:shadow-primary-500/40 hover:scale-[1.02] transition-all bg-primary-600 hover:bg-primary-700 text-white border-none"
                 aria-label="Ir para finalizar pedido"
               >
-                Finalizar Pedido
+                Checkout
               </Button>
               <Button
                 onClick={handleContinueShopping}
-                variant="outline"
-                size="lg"
-                className="w-full"
+                variant="ghost"
+                className="w-full rounded-full h-12 text-neutral-500 hover:text-neutral-900 hover:bg-neutral-100"
                 aria-label="Voltar para continuar comprando"
               >
-                <ArrowLeft className="w-5 h-5" aria-hidden="true" />
+                <ArrowLeft className="w-5 h-5 mr-2" aria-hidden="true" />
                 Continuar Comprando
               </Button>
             </div>

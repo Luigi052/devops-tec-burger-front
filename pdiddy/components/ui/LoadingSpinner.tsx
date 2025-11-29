@@ -48,7 +48,7 @@ export function LoadingOverlay({ message = 'Carregando...' }: LoadingOverlayProp
   return (
     <div className="flex flex-col items-center justify-center gap-4 p-8">
       <LoadingSpinner size="lg" />
-      <p className="text-neutral-600 text-sm">{message}</p>
+      <p className="text-brown-300 text-sm">{message}</p>
     </div>
   );
 }

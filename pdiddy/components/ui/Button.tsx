@@ -1,7 +1,7 @@
 import React from 'react';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
-export type ButtonSize = 'sm' | 'md' | 'lg';
+export type ButtonSize = 'sm' | 'md' | 'lg' | 'icon';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
@@ -11,16 +11,17 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: 'bg-primary-500 text-white hover:bg-primary-600 active:bg-primary-700 disabled:bg-primary-300',
-  secondary: 'bg-neutral-200 text-neutral-900 hover:bg-neutral-300 active:bg-neutral-400 disabled:bg-neutral-100',
-  outline: 'border-2 border-primary-500 text-primary-500 hover:bg-primary-50 active:bg-primary-100 disabled:border-primary-300 disabled:text-primary-300',
-  ghost: 'text-primary-500 hover:bg-primary-50 active:bg-primary-100 disabled:text-primary-300',
+  primary: 'bg-primary-500 text-cream-50 hover:bg-primary-600 active:bg-primary-700 disabled:bg-cream-400 shadow-sm hover:shadow-md',
+  secondary: 'bg-cream-50 text-brown-400 border border-cream-500 hover:bg-cream-100 active:bg-cream-200 disabled:bg-cream-300',
+  outline: 'border border-primary-500 text-primary-600 hover:bg-primary-50 active:bg-primary-100 disabled:border-cream-400 disabled:text-brown-200',
+  ghost: 'text-brown-400 hover:bg-cream-200 active:bg-cream-300 disabled:text-brown-200',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: 'px-3 py-1.5 text-sm',
-  md: 'px-4 py-2 text-base',
-  lg: 'px-6 py-3 text-lg',
+  sm: 'px-4 py-2 text-sm font-semibold',
+  md: 'px-5 py-2.5 text-base font-semibold',
+  lg: 'px-6 py-3 text-lg font-semibold',
+  icon: 'p-2',
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -35,10 +36,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         aria-disabled={isDisabled}
         className={`
           inline-flex items-center justify-center gap-2
-          font-medium rounded-lg
-          transition-colors duration-200
+          rounded-xl
+          transition-all duration-200
           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
-          disabled:cursor-not-allowed disabled:opacity-60
+          disabled:cursor-not-allowed disabled:opacity-50
           ${variantStyles[variant]}
           ${sizeStyles[size]}
           ${className}

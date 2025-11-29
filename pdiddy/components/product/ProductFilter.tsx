@@ -16,30 +16,30 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
 }) => {
   return (
     <section className="mb-6" aria-labelledby="filter-heading">
-      <h2 id="filter-heading" className="text-lg font-semibold text-neutral-900 mb-3">
+      <h2 id="filter-heading" className="text-lg font-semibold text-brown-900 mb-3">
         Categorias
       </h2>
-      
-      <div className="flex flex-wrap gap-2" role="group" aria-label="Filtros de categoria">
+
+      <div className="flex overflow-x-auto pb-4 gap-3 scrollbar-hide" role="group" aria-label="Filtros de categoria">
         <Button
           variant={selectedCategory === null ? 'primary' : 'outline'}
-          size="sm"
+          className={`rounded-full px-6 h-10 whitespace-nowrap transition-all ${selectedCategory === null ? 'shadow-md shadow-primary-500/25 bg-primary-600 text-white hover:bg-primary-700' : 'bg-cream-100 border-cream-300 hover:bg-cream-200 text-brown-700'}`}
           onClick={() => onCategoryChange(null)}
           aria-pressed={selectedCategory === null}
-          aria-label="Mostrar todos os produtos"
         >
-          Todos
+          🔥 Todos
         </Button>
-        
+
         {categories.map((category) => (
           <Button
             key={category}
             variant={selectedCategory === category ? 'primary' : 'outline'}
-            size="sm"
+            className={`rounded-full px-6 h-10 whitespace-nowrap transition-all ${selectedCategory === category ? 'shadow-md shadow-primary-500/25 bg-primary-600 text-white hover:bg-primary-700' : 'bg-cream-100 border-cream-300 hover:bg-cream-200 text-brown-700'}`}
             onClick={() => onCategoryChange(category)}
             aria-pressed={selectedCategory === category}
-            aria-label={`Filtrar por ${category}`}
           >
+            {/* Map category to emoji/icon here if possible, for now just text */}
+            {category === 'Hambúrguer' ? '🍔 ' : category === 'Bebida' ? '🥤 ' : category === 'Sobremesa' ? '🍦 ' : '🍽️ '}
             {category}
           </Button>
         ))}

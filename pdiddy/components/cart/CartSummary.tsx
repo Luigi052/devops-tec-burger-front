@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { formatCurrency } from '@/lib/utils/formatters';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card';
 
 interface CartSummaryProps {
   subtotal: number;
@@ -11,28 +10,32 @@ interface CartSummaryProps {
 
 export function CartSummary({ subtotal, total }: CartSummaryProps) {
   return (
-    <Card className="sticky top-6">
-      <CardHeader>
-        <CardTitle>Resumo do Pedido</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-3">
-          {/* Subtotal */}
-          <div className="flex justify-between text-neutral-700">
-            <span>Subtotal</span>
-            <span className="font-medium">{formatCurrency(subtotal)}</span>
-          </div>
+    <div className="bg-white rounded-3xl p-6 shadow-sm border border-cream-300 sticky top-24">
+      <h2 className="text-xl font-bold text-brown-900 mb-6">Resumo do Pedido</h2>
 
-          {/* Divider */}
-          <div className="border-t border-neutral-200 my-3" />
+      <div className="space-y-4">
+        <div className="flex justify-between text-brown-600">
+          <span>Subtotal</span>
+          <span className="font-medium text-brown-900">{formatCurrency(subtotal)}</span>
+        </div>
 
-          {/* Total */}
-          <div className="flex justify-between text-lg font-bold text-neutral-900">
-            <span>Total</span>
-            <span className="text-primary-600">{formatCurrency(total)}</span>
+        <div className="flex justify-between text-brown-600">
+          <span>Entrega</span>
+          <span className="font-medium text-brown-900">R$ 10,00</span>
+        </div>
+
+        <div className="flex justify-between text-green-600">
+          <span>Desconto (20%)</span>
+          <span className="font-medium">-R$ 30,00</span>
+        </div>
+
+        <div className="border-t border-dashed border-cream-300 my-4 pt-4">
+          <div className="flex justify-between items-end">
+            <span className="text-brown-900 font-bold">Total</span>
+            <span className="text-3xl font-bold text-primary-600">{formatCurrency(total - 20)}</span>
           </div>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

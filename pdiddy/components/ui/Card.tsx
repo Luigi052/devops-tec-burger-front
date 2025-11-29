@@ -26,7 +26,7 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={`
-          bg-white rounded-lg border border-neutral-200
+          bg-cream-50 rounded-xl border border-cream-400
           ${paddingStyles[padding]}
           ${shadowStyles[shadow]}
           ${className}
@@ -48,7 +48,7 @@ export const CardHeader = ({ children, className = '', ...props }: React.HTMLAtt
 );
 
 export const CardTitle = ({ children, className = '', ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
-  <h3 className={`text-xl font-semibold text-neutral-900 ${className}`} {...props}>
+  <h3 className={`text-xl font-bold text-brown-500 ${className}`} {...props}>
     {children}
   </h3>
 );

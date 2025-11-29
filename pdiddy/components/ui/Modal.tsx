@@ -109,7 +109,7 @@ export const Modal: React.FC<ModalProps> = ({
       <div
         ref={modalRef}
         className={`
-          relative bg-white rounded-lg shadow-xl
+          relative bg-cream-50 rounded-lg shadow-xl
           w-full ${sizeStyles[size]}
           max-h-[90vh] overflow-y-auto
           transform transition-all
@@ -117,9 +117,9 @@ export const Modal: React.FC<ModalProps> = ({
       >
         {/* Header */}
         {(title || showCloseButton) && (
-          <div className="flex items-center justify-between p-6 border-b border-neutral-200">
+          <div className="flex items-center justify-between p-6 border-b border-cream-400">
             {title && (
-              <h2 id="modal-title" className="text-xl font-semibold text-neutral-900">
+              <h2 id="modal-title" className="text-xl font-semibold text-brown-500">
                 {title}
               </h2>
             )}
@@ -127,7 +127,7 @@ export const Modal: React.FC<ModalProps> = ({
               <button
                 ref={closeButtonRef}
                 onClick={onClose}
-                className="text-neutral-400 hover:text-neutral-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg p-1"
+                className="text-brown-200 hover:text-brown-400 transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 rounded-lg p-1"
                 aria-label="Fechar modal"
               >
                 <svg
@@ -156,7 +156,7 @@ export const Modal: React.FC<ModalProps> = ({
 
 export const ModalFooter = ({ children, className = '', ...props }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={`flex items-center justify-end gap-3 px-6 py-4 border-t border-neutral-200 ${className}`}
+    className={`flex items-center justify-end gap-3 px-6 py-4 border-t border-cream-400 ${className}`}
     {...props}
   >
     {children}

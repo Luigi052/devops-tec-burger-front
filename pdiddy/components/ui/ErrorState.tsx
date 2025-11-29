@@ -23,8 +23,8 @@ export function ErrorState({
         <AlertCircle className="w-8 h-8 text-red-500" />
       </div>
       <div className="space-y-2">
-        <h3 className="text-lg font-semibold text-neutral-900">{title}</h3>
-        <p className="text-sm text-neutral-600 max-w-md">{message}</p>
+        <h3 className="text-lg font-semibold text-brown-500">{title}</h3>
+        <p className="text-sm text-brown-300 max-w-md">{message}</p>
       </div>
       {onRetry && (
         <Button onClick={onRetry} variant="primary" className="gap-2">
